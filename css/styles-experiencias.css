@@ -1,0 +1,170 @@
+/* Estilos generales */
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+:root{
+    --logo-color: #e7d6ad;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+
+main {
+    font-family: Arial, sans-serif;
+    margin: 5%;
+    padding: 0;
+}
+@media all and (max-width:600px) {
+
+    main {
+        margin: 3%;
+    } 
+}
+
+
+/* Estilos de las secciones */
+.parent {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 2fr));
+
+    padding: 1%;
+}
+
+.reseña-form.full-width {
+    grid-column-start: 1;
+    grid-column-end: -1;
+}
+
+
+.parent section {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    border: 0px solid #cccccca1;
+    background-color: #f3f3f3e0;
+    transition: box-shadow 0.3s;
+    padding-right: 3%;
+    max-width: 90vw;
+    padding-bottom: 3%;
+}
+
+
+
+.parent section img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    margin-left: 3% ;
+    object-fit:cover;
+    border-radius: 100%;
+}
+.reseña-form.full-width .info {
+    color:#8a8a8a;
+    font-size: medium;
+}
+
+
+@media all and (max-width:600px) {
+    .parent section img {
+        width: 85px;
+        height: 85px;
+    }
+    .parent section p{
+        font-size: small;
+    }
+    .parent section h2{
+            margin-top: 26px;
+            font-size:16px;
+    }
+
+    
+}
+
+
+a{
+    text-decoration: none;
+}
+h2{
+    margin-top: 20px;
+    margin-right: 10px;
+}
+.parent section .nota {
+    list-style-type: none;
+    display: flex;
+    justify-content:left;
+    img{
+        width: 40px;
+        height: 65px;
+        object-fit:contain;
+        border-radius: 0;
+        margin: 0 0 0 -10px;
+    }
+}
+
+.gris{
+    filter: grayscale(100%);
+}
+
+.title {
+    color: #333;
+    font-size: 24px;
+}
+
+.description {
+    color: #a7a7a7;
+    font-size: 1rem;
+    margin-top: 0%;
+    max-width: 93%;
+}
+
+/* Section para la Reseña */
+.reseña-form {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.reseña-form form p {
+    margin-bottom: 20px;
+    font-size: 23px;
+    font-weight: 700;
+    align-self: flex-start; 
+}
+.reseña-form input,
+.reseña-form textarea {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.reseña-form textarea {
+    height: 150px;
+}
+
+.reseña-form button {
+    background-color: var(--logo-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.reseña-form button:hover {
+    background-color: #bcac88;
+}
+.vota{
+    display: flex; 
+    align-items: center;
+    margin-bottom: 15px;
+}

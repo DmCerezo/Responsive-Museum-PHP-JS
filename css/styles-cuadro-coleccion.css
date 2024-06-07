@@ -1,0 +1,58 @@
+.parent {
+    display: grid;
+    gap: 5%;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 2fr)); 
+    grid-row: inherit;
+    padding: 5% 0 5% 0;
+}
+
+.parent section {
+    position: relative;
+}
+
+.parent section img {
+    border-radius: 12%;
+    object-fit: cover;
+    max-height: 300px;
+}
+
+.parent section h2,.parent section p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.parent section:hover h2,
+.parent section:hover p {
+    opacity: 1;
+}
+
+.parent section img:hover {
+    animation: animation 3s ease;
+    filter: drop-shadow(0px 0px 3px #000000);
+}
+
+@keyframes animation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+p {
+    color: #494949;
+}
+
+b {
+    font-size: small;
+    color: rgb(173, 69, 0);
+}

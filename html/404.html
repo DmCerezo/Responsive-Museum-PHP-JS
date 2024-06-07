@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404</title>
+    <style>
+        @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css);
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+        :root {
+            --logo-color: #e7d6ad;
+            --area-color: #222;
+            --form-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @media all and (max-width: 450px) {
+            * {
+                font-size: small;
+            }
+            h1 {
+                font-size: xx-large;
+            }
+        }
+
+        body {
+            background: radial-gradient(circle, rgba(87, 53, 0, 1) 0%, rgba(56, 28, 0, 1) 44%, rgba(10, 6, 0, 1) 100%);
+            font-family: Montserrat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            background: var(--form-color);
+            padding: 2rem;
+            border-radius: 0.625rem;
+            box-shadow: 0.4375rem 0.8125rem 2.3125rem #000;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 2rem;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Error 404 :c</h1>
+        <p>Page Not Found</p>
+        <a href="../index.php">Volver a la página principal</a>
+    </div>
+</body>
+</html>

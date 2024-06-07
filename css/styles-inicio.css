@@ -1,0 +1,423 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilos generales */
+body {
+    font-family:Montserrat, monospace, 'Times New Roman', Times, serif;
+
+}
+main {
+    margin: 2%; 
+}
+
+/* Div para animacion con saludo a la web ---------------*/
+.cont1 {
+position: relative;
+width: 100%;
+font-family:sans-serif;
+height: 55.8vw;
+background-image: url(../img/museum.jpg);
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.div-socra-c1, .div-bocadillo, .div-bocadillo2{
+top: 44%;
+left: 61%;
+position: absolute;
+width: 25%;
+z-index: 2;
+filter: drop-shadow(6px 5px 4px #012521);
+animation: fadeIn 2s ease; 
+}
+
+.div-texto{
+    top : 17%;
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    animation: fadeIn 2s ease; 
+    filter: drop-shadow(3px 3px 0px #ffffff);
+    h1{
+        font-family: Montserrat;
+        font-weight:999;
+    }
+
+}
+
+.degradado{
+    font-size: 8vw;
+    background: linear-gradient(90deg, rgb(61, 38, 0) 0%, rgb(106, 62, 0) 35%, rgb(0, 0, 0) 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-style: oblique;
+}
+
+.minus{
+    font-size: 3vw;
+    background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 35%, rgb(255, 0, 0) 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    font-style: oblique;
+}
+
+.div-socra-c1:hover{
+    transform: scale(1.03);
+    transition: all .8s;
+}
+
+
+@media all and (max-width: 600px) {
+    .cont1 {
+        background-position:-620px 0px;
+        height: 87vh;
+    }
+
+    .div-socra-c1{
+        width: 50vw;
+        top: 62%;
+        left: 50%;
+    }
+
+    .div-texto{
+        top : 35%;
+    }
+
+    .degradado{
+        font-size: 12vw;
+    }
+    .minus{
+        font-size: 4vw;
+    }
+} 
+
+/* Segunda imagen de fondo paralax */
+
+.cont2 {
+    top: calc(55.8vw*2 - 118vw);
+    position: relative;
+    width: 100%;
+    font-family:sans-serif;
+    height: 60vw;
+    background-image: url(https://i.redd.it/sqhzilxp34tc1.png  );
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+    .div-socra{
+        top: 40%;
+        left: 7%;
+        position: absolute;
+        width: 30%;
+        z-index: 3;
+        filter: drop-shadow(6px 5px 4px #012521);
+        animation: fadeIn 2s ease; 
+    }
+    .div-bocadillo2{
+        left: 23%;
+        top : 30% ;
+        width: 57%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .line-2{
+        position: inherit;
+        margin-top: 12%;
+        border-right: 2px solid rgba(255,255,255,.75);
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 2.8vw;
+        visibility: hidden;
+        b{
+            font-size: 2.9vw;
+            color: rgb(100, 19, 19);
+            
+        }
+    }
+
+    /* Animacion Escribir segundo paralax */
+    .anim-escrib1{
+        animation: aparecer 0s 1s forwards,
+                   escrib 1.5s steps(60) 3s 1 normal both,
+                   blinkTextCursor 800ms steps(44) infinite normal,
+                   desparecer 0s ease-in-out 6s forwards;
+      }
+    .anim-escrib2{ 
+        animation: aparecer 0s 6s forwards,
+                   escrib 1.5s steps(60) 8s 1 normal both,
+                   blinkTextCursor 800ms steps(44) infinite normal,
+                   desparecer 0s ease-in-out 11s forwards;
+    }
+    .anim-escrib3{ 
+        animation: aparecer 0s 11s forwards,
+                   escrib 1.5s steps(60) 12s 1 normal both,
+                   blinkTextCursor 800ms steps(44) infinite normal,
+                   desparecer 0s ease-in-out 15s forwards;
+    }
+    .anim-escrib4{ 
+        animation: aparecer 0s 15s forwards,
+                   escrib 1.5s steps(60) 16s 1 normal both,
+                   blinkTextCursor 800ms steps(44) infinite normal;
+    }
+
+
+@keyframes fadeIn {
+    10% {opacity: 0;
+    filter: blur(7px);}
+}
+
+@-webkit-keyframes desparecer {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+
+@-webkit-keyframes aparecer {
+    to {
+        visibility:visible;
+    }
+}
+
+
+.div-socra:hover{
+    transform: scale(1.03);
+    transition: all .8s;
+}
+
+.div-bocadillo:hover{
+    transform: scale(1.03);
+    transition: all .8s;
+}
+
+img {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+}
+
+  @keyframes escrib{
+    from{width: 0;}
+    to{width: 19.3em;}
+  }
+
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(49, 48, 48, 0.75);}
+  to{border-right-color: transparent;}
+}
+
+@media all and (max-width: 600px) {
+    .cont2{
+       height: 87vh;
+    }
+    .div-socra{
+        width: 70vw;
+        top: 47%;
+        left: 12%;
+    }
+    .div-bocadillo2{
+        width: 93%;
+        left: 3%;
+    }
+    .line-2{
+        b{
+            font-size: 4.6vw;
+        }
+    }
+    @keyframes escrib{
+        from{width: 0;}
+        to{width:30.5em;}
+      }
+    
+}
+
+
+/* Carrusel de secciones------------------------------------- */
+
+label{cursor: pointer;}
+
+/* Contenedor para centrar */
+.ContainerCenter{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+/* Ocultal el input */
+input{display: none}
+
+/* Slider */
+.Carrusels{
+    height: 110vh;
+    width: 95vw;
+    position: relative;
+    overflow-x: hidden;
+}
+
+@media all and (max-width: 600px) {
+    .Carrusels{
+        height: 70vh;
+        width: 90vw;
+        position: relative;
+        overflow-x: hidden;
+      }
+}
+.txt-carrusel{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #e2e2e2c4;
+    left: 16%;
+    top:45%;
+    width: 70%;
+    max-width: 70%;
+    text-decoration: none;
+    padding: 2%;
+    font-weight: 00;
+    p{
+        font-size: larger;
+    }
+    b{
+        color: #000000;
+    }
+    h2{
+        color: #494949;
+
+    }
+}
+
+.Carrusel{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    overflow-y: hidden;
+    transition: all .5s ease;
+    background-position: center;
+}
+
+/* Estado 1 */
+#Slider1:checked ~ .Carrusels .Carrusel:nth-of-type(1) {transform: translate(0%, 0);}
+#Slider1:checked ~ .Carrusels .Carrusel:nth-of-type(2) {transform: translate(100%, 0);}
+#Slider1:checked ~ .Carrusels .Carrusel:nth-of-type(3) {transform: translate(200%, 0);}
+/* Estado 2 */
+#Slider2:checked ~ .Carrusels .Carrusel:nth-of-type(1) {transform: translate(-100%, 0);}
+#Slider2:checked ~ .Carrusels .Carrusel:nth-of-type(2) {transform: translate(0%, 0);}
+#Slider2:checked ~ .Carrusels .Carrusel:nth-of-type(3) {transform: translate(100%, 0);}
+/* Estado 3 */
+#Slider3:checked ~ .Carrusels .Carrusel:nth-of-type(1) {transform: translate(-200%, 0);}
+#Slider3:checked ~ .Carrusels .Carrusel:nth-of-type(2) {transform: translate(-100%, 0);}
+#Slider3:checked ~ .Carrusels .Carrusel:nth-of-type(3) {transform: translate(0%, 0);}
+
+
+/* Flechas */
+.Carrusels .ArrowLeft, .Carrusels .ArrowRight{
+    position: absolute;
+    height: 100%;
+    width: 2em;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    user-select: none;
+    font-size: 5vw;
+    color: #999999;
+}
+
+.Carrusels .ArrowLeft{left:0px;}
+.Carrusels .ArrowRight{right: 0px;}
+/* Configuracion de flechas individuales */
+#Slider1:checked ~ .Carrusels .Arrow1{display: flex;}
+#Slider2:checked ~ .Carrusels .Arrow2{display: flex;}
+#Slider3:checked ~ .Carrusels .Arrow3{display: flex;}
+
+
+/* Selectores */
+.Selectors {
+    width: 100px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Selectors .Selector {
+    background-color: #e8e8e8;
+    height: 15px;
+    width: 15px;
+    display: block;
+    border-radius: 5px;
+    margin-left: 3px;
+}
+
+/* Condicionales para botón inferior */
+#Slider1:checked ~ .Selectors .Selector:nth-of-type(1) {background-color: #999999;}
+#Slider2:checked ~ .Selectors .Selector:nth-of-type(2) {background-color: #999999;}
+#Slider3:checked ~ .Selectors .Selector:nth-of-type(3) {background-color: #999999;}
+
+/* Grid con cajas de informacion---------------------- */
+.parent {
+    display: grid;
+    gap: 5%;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 2fr)); 
+    padding: 0% 0 5% 0;
+    margin-bottom: auto;
+    section{
+        background-image: url(../img/patron-museo.png);
+    }
+    article{
+        padding: 4%;
+    }
+}
+    .parent section img{    
+        border-radius: 1%;
+        object-fit:cover;
+        max-height: 240px;
+    }
+
+    .parent section img:hover{
+        animation: animation 3s ease;
+        filter: drop-shadow(0px 0px 3px #000000);
+    }   
+
+    p{
+        color: #494949;
+    }
+    
+    b{
+        font-size: small;
+        color:rgb(173, 69, 0);
+    }
+    
+    @media all and (max-width: 1250px) {
+        .parent {
+            margin-bottom: 10vh; /* 10% del alto de la ventana */
+        }
+    }
+    
+    @media all and (max-width: 1050px) {
+        .parent {
+            margin-bottom: 40vh; /* 30% del alto de la ventana */
+        }
+    }
+    
+    @media all and (max-width: 600px) {
+        .parent {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: auto; /* Evitar margen inferior */
+        }
+        .parent section{
+            margin-bottom: 5%;
+        }
+    }
+    

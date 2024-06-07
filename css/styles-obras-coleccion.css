@@ -1,0 +1,175 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+*{
+    padding: 0;
+    margin: 0;
+}
+img {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+/* Estilos generales */
+body {
+    font-family:Montserrat, 'Times New Roman', Times, serif;
+    margin: 3%; 
+}
+
+.coleccion {
+    margin-left: 250px;
+    display: grid;
+    gap: 5%;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 2fr)); 
+    padding: 0% 0 5% 0;
+}
+    .coleccion section{
+        background-color: #dedede;
+
+    }
+    .coleccion article{
+        padding: 4%;
+    }
+
+    .coleccion section  img{    
+        border-radius: 1%;
+        object-fit:cover;
+        height: 240px;
+        
+    }
+
+    .coleccion section img:hover{
+        animation: animation 3s ease;
+        filter: drop-shadow(0px 0px 3px #000000);
+    }   
+    .coleccion a{
+        text-decoration: none;
+        color: black;
+    }
+    .coleccion p{
+        color: #494949;
+    }
+    
+    .coleccion b{
+        font-size: small;
+        color:rgb(173, 69, 0);
+    }
+    @media all and (max-width:700px) {
+        .coleccion {
+            gap: 2%;
+        }
+    }
+
+
+    
+/* Estilos para el menú vertical */
+.sidebar{
+    max-width: fit-content;
+}
+
+.sidebar p {
+    font-weight: 600;
+  }
+  
+  .sidebar button{
+    display: none;
+    width: 100%;
+    height: 5%;
+  
+  }
+  
+  .toggle-checkbox {
+    display: none;
+  }
+  
+  .menu-item {
+      margin-bottom: 10px;
+      width: 90%;
+  
+  }
+  a:active{
+    color: black;
+  }
+  
+  .menu-link {
+      width: 100%;
+      text-decoration: none;
+      color: #7d7d7d;
+      display: block;
+      margin-left: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      width: fit-content;
+  }
+  
+  .menu-link:hover {
+      background-color: #ddd;
+  }
+  .next{
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    max-height:30px ;
+  }
+  .collapsible{
+    visibility: hidden;  
+  }
+  
+  /* Adaptacion para moviles */
+  @media all and (max-width: 850px) {
+    .parent {
+      width: 100%;
+      margin-left: 0px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 80px;
+    }
+    .menu-link{
+      width: fit-content;
+    }
+  
+    .sidebar {
+      width: auto;
+      padding: 10px; 
+      font-size: 14px; 
+    }
+  
+    .body {
+      width: 100%;
+      height: 100vh;
+    }
+  
+    /* Estilo para el botón de filtrar */
+    .collapsible {
+      visibility:visible;  
+      cursor: pointer;
+      background-color: #ccc;
+      padding: 10px;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .collapsible:hover {
+      background-color: #e4cd9c;
+    }
+  
+    /* Estilo para el sidebar cuando el checkbox está marcado */
+    .toggle-checkbox:checked + .collapsible + .sidebar {
+      display: block;
+    }
+  
+    /* Ocultar el sidebar inicialmente */
+    .sidebar {
+      display: none;
+    }
+    .next:last-child{
+      margin-right: 11px;
+    }
+  
+    
+  }

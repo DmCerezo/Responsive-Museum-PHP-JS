@@ -1,0 +1,213 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+:root{
+    --logo-color: #e7d6ad;
+}
+*{
+    font-family: Montserrat;
+}
+
+
+/* Texto de presentacion (Solo Se usa en INDEX)--*/
+.Presenta-Museo {
+    display: flex;
+    flex-direction:row-reverse;
+    justify-content: center;
+    align-items: center;
+    position:static;
+    margin-top: calc(55.8vw - 63%);
+
+    .it-txt-p{
+        font-size: 3.4vw;
+        width: 70%;
+        background: linear-gradient(90deg, rgb(163, 117, 0) 0%, rgb(77, 63, 13) 35%, rgb(92, 58, 0) 100%);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        z-index: 2;
+    }
+
+    .it2-img-p {
+        width: 20%;
+        z-index: 2;
+        filter: drop-shadow(6px 5px 4px #1f0f00);
+    }
+
+    .banner{
+        background-color: #f1e2bd;
+        background-image: url(../../img/patron-museo.png);
+        background-size: 150px 130px;
+        width: 100%;
+        height: 28%;
+        max-height: 13vw;
+        position: absolute;
+        z-index: 1;
+    }
+    
+}
+
+
+/* Estilos de la presentación del final de paralax (Solo Se usa en INDEX) */
+.presentacion-fin-paralax{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: -14vh;
+    margin-bottom: 5%;
+
+    .it-txt {
+        font-size: 2.8vw;
+        width: 70%;
+        background: linear-gradient(90deg, rgba(45, 32, 0, 1) 0%, rgba(69, 54, 0, 1) 35%, rgba(176, 110, 0, 1) 100%);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        z-index: 1;
+        margin-left: 6%;
+    }
+
+    .it2-img {
+        width: 30%;
+        filter: drop-shadow(6px 5px 4px #1d0112);
+        animation: animation 3s infinite ease;
+        max-width: 200px;
+        z-index: 1;
+    }
+    .it2-img img {
+        width: 70%;
+    }
+
+    .banner{
+        background-color: #f1e2bd;
+        background-image: url(../../img/patron-museo.png);
+        background-size: 190px 180px;
+        width: 100%;
+        height: 18%;
+        max-height: 15vw;
+        position: absolute;
+        z-index: 0;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .presentacion-fin-paralax{
+        margin-top: calc(55.8vw - 68%);
+    }
+    .it2-img img {
+        width: 20%;
+    }
+}
+
+/* Estilos de la presentación generico*/
+.presentacion-principal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    .it-txt {
+        font-size: 2.3vw;
+        width: 70%;
+        background: linear-gradient(90deg, rgba(45, 32, 0, 1) 0%, rgba(69, 54, 0, 1) 35%, rgba(176, 110, 0, 1) 100%);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        margin-left: 6%;
+    }
+
+    .it2-img {
+        width: 30%;
+        filter: drop-shadow(6px 5px 4px #1d0112);
+        animation: animation 3s infinite ease;
+        max-width: 200px;
+    }
+    .it2-img img {
+        width: 60%;
+    }
+    .banner{
+        background-color: #f1e2bd;
+        background-image: url(../../img/patron-museo.png);
+        background-size: 190px 180px;
+        width: 100%;
+        height: 18%;
+        max-height: 12vw;
+        position: absolute;
+        z-index: -1;
+    }
+
+}
+@media all and (max-width:600px) {
+    .presentacion-principal .it2-img img{
+        width: 50%;
+    }
+
+    .presentacion-principal .it-txt {
+        font-size: 4vw;
+    }
+    .presentacion-principal .banner{
+        height: 10%;
+    }
+
+    
+}
+
+
+.presentacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    .it-txt {
+        font-size: 2.3vw;
+        width: 70%;
+        background: linear-gradient(90deg, rgba(45, 32, 0, 1) 0%, rgba(69, 54, 0, 1) 35%, rgba(176, 110, 0, 1) 100%);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        margin-left: 6%;
+    }
+
+    .it2-img {
+        width: 30%;
+        filter: drop-shadow(6px 5px 4px #1d0112);
+        animation: animation 3s infinite ease;
+        max-width: 200px;
+    }
+    .it2-img img {
+        width: 60%;
+    }
+    .banner{
+        background-color: #f1e2bd;
+        background-image: url(../../img/patron-museo.png);
+        background-size: 190px 180px;
+        width: 100%;
+        height: 18%;
+        max-height: 12vw;
+        position: absolute;
+        z-index: -1;
+    }
+
+}
+
+@media all and (max-width:600px) {
+    .presentacion .it2-img img{
+        width: 50%;
+    }
+
+    .presentacion .it-txt {
+        font-size: 3vw;
+    }
+    .presentacion .banner{
+        height: 10%;
+    }
+
+    
+}
+
+@keyframes animation {
+    0% { transform: scale(1); } 
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); } 
+}
+

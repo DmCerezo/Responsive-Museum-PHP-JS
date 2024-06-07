@@ -1,0 +1,69 @@
+<?php
+/*******************************************
+ *
+ * Ingeniería Informática - PW - David Martín Cerezo - 2024
+ *
+ *******************************************
+ *
+ *  Encabezado para todos las paginas
+ *
+ ******************************************************************************/
+?>
+
+<header>
+    <ul class="head-top">
+        <!-- Logo -->
+        <li>
+            <a href="<?= BASE_URL ?>index.php"><img class="logo" src="<?= BASE_URL ?>img/M3.png" alt="Logo museo"></a>
+        </li>
+        <!-- Nombre museo -->
+        <li class="nombre-museo">
+            <h1>Museo Sócrates</h1>
+        </li>
+        <!-- Login -->
+        <?php
+        session_start();
+
+        // Verificar si hay una sesión iniciada
+        if (isset($_SESSION['usuario'])) {
+            // Si hay una sesión iniciada, mostrar saludo y botón para cerrar sesión
+            $usuario = $_SESSION['usuario'];
+            echo '<div class="userIniciado">';
+            echo "<p>Bienvenido, $usuario.</p>";
+            echo '<form action="'.BASE_URL.'cerrar_sesion.php" method="post"><button type="submit">Cerrar sesión</button></form>';
+            echo '</div>';
+        } else {
+            // Si no hay una sesión iniciada, mostrar formulario de inicio de sesión
+        ?>
+            <!-- Login -->
+            <li class="form-head-top">
+                <form id="loginform" action="<?= BASE_URL ?>iniciar.php" method="POST">
+                    <input type="text" name="usuario" placeholder="Usuario" required>
+                    <input type="password" placeholder="Contraseña" name="password" required>
+                    <button type="button" class="btn-alta" title="Alta" onclick="window.location.href='<?= BASE_URL ?>html/altausuarios.html'">Alta</button>
+                    <button type="submit" class="btn-iniciar" title="Inicio">Iniciar</button>
+                </form>
+                <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+                    <p class="exitoMsg">Usuario o contraseña incorrectos.</p>
+                <?php endif; ?>
+            </li>
+        <?php } ?>
+    </ul>
+    <!-- Barra de navegación -->
+    <nav class="nav-menu">
+        <input type="checkbox" id="check">    
+        <label for="check" class="checkbtn">
+            <i class="fa-solid fa-circle"></i>
+            <i class="fa-solid fa-square-plus"></i>
+            <i class="fa-solid fa-square-minus"></i>
+        </label>
+        <ul class ="nav-list">
+            <li class="ini"><a href="<?= BASE_URL ?>index.php">Inicio</a></li>
+            <li class="des"><a href="<?= BASE_URL ?>html/coleccion.php">Colección</a></li>
+            <li class="des"><a href="<?= BASE_URL ?>html/visita.php">Visita</a></li>
+            <li class="des"><a href="<?= BASE_URL ?>html/exposiciones.php">Exposiciones</a></li>
+            <li class="des"><a href="<?= BASE_URL ?>html/informacion.php">Información</a></li>
+            <li class="des"><a href="<?= BASE_URL ?>html/experiencias.php">Experiencias</a></li>
+        </ul>
+    </nav>
+</header>

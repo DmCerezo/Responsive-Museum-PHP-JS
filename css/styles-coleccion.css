@@ -1,0 +1,441 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+body{
+  background-color: #ebebeb;
+}
+iframe{
+  height: 100%;
+  width: 100%;
+  border: none;
+}
+
+
+/* Grid con cajas de informacion---------------------- */
+.parent {
+    margin: 5% 0% 5% 5%;
+    width: 80%;
+    height: auto;
+    padding: 1%;
+    background-color: #ebebeb;
+    display: grid;
+    grid:
+      "sidebar body" 1fr
+      / auto 1fr;
+    gap: 5px;
+    overflow: scroll;
+    scrollbar-width: none;
+
+    }
+
+  
+  .sidebar { 
+        grid-area: sidebar; 
+        width: 15vw;
+        padding: 5%;
+    }
+
+  /* caja con info */
+  .body-coleccion {
+
+      grid-area: body; 
+      background-color: #f1f1f1;
+      display: grid;
+      gap: 3%;
+      grid-template-columns: repeat(auto-fill, minmax(17rem, 2fr)); 
+      padding: 2% 2% 10% 2%;
+    }
+  .body-coleccion  section{
+        background-color: #dedede;
+        max-height: 380px ;
+    }
+  .body-coleccion  article{
+          padding: 4%;
+      }
+
+  .body-coleccion section a img{    
+          object-fit:cover!important; 
+          width: 100%;
+          height: 240px;
+      }
+
+  .body-coleccion section img:hover{
+          filter: drop-shadow(0px 0px 3px #000000);
+      }   
+
+      .body-coleccion a{
+          text-decoration: none;
+          color: black;
+      }
+
+      .body-coleccion p{
+          color: #494949;
+      }
+      
+      .body-coleccion b{
+          font-size: small;
+          color:rgb(173, 69, 0);
+      }
+      @media all and (max-width:700px) {
+          .body-coleccion {
+              display: flex;
+              flex-direction: column;
+              padding-bottom: 700px;
+          }
+          .body-coleccion  section{
+            margin-bottom: 5%;
+        }
+
+
+      }
+
+      .paginacion{
+        display: flex;
+        flex-direction: row;
+      }
+      .paginacion a{
+        font-size: larger;
+        font-weight: bold;
+      }
+  
+
+
+/* Estilos para el menú vertical */
+.sidebar p {
+  font-weight: 600;
+}
+
+.sidebar button{
+  display: none;
+  width: 100%;
+  height: 5%;
+
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+.menu-item {
+    margin-bottom: 10px;
+    width: 90%;
+
+}
+a:active{
+  color: black;
+}
+
+.menu-link {
+    width: 100%;
+    text-decoration: none;
+    color: #7d7d7d;
+    display: block;
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+
+.menu-link:hover {
+    background-color: #ddd;
+}
+.next{
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+  max-height:30px ;
+}
+.collapsible{
+  visibility: hidden;  
+}
+
+/* Adaptacion para moviles */
+@media all and (max-width: 850px) {
+  .parent {
+    width: 100%;
+    margin-left: 0px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10%;
+    overflow: scroll;
+  }
+  .menu-link{
+    width: fit-content;
+  }
+
+  .sidebar {
+    width: auto;
+    padding: 10px; 
+    font-size: 14px; 
+  }
+
+  .body-coleccion {
+    width: 100%;
+    height: 100vh;
+  }
+
+  /* Estilo para el botón de filtrar */
+  .collapsible {
+    visibility:visible;  
+    cursor: pointer;
+    background-color: #ccc;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .collapsible:hover {
+    background-color: #e4cd9c;
+  }
+
+  /* Estilo para el sidebar cuando el checkbox está marcado */
+  .toggle-checkbox:checked + .collapsible + .sidebar {
+    display: block;
+  }
+
+  /* Ocultar el sidebar inicialmente */
+  .sidebar {
+    display: none;
+  }
+  .next:last-child{
+    margin-right: 11px;
+  }
+
+  
+}
+
+/* VISTA ADMINISTRACION -----------------------------*/
+/* Formualrio para añadir obra */
+/* Estilos para la sección del formulario de añadir obra */
+
+.title{
+  margin-left:2%;
+  margin-bottom: -15px;
+  font-weight: bold;
+}
+.form-aniadir {
+  padding: 1%;
+  max-width: 100%; 
+  margin: 0 2% 0 2%;
+  background-color: #f2f2f2;
+  border-radius: 0px;
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el formulario */
+.form-aniadir form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+/* Estilos para las etiquetas y los campos de entrada en una fila */
+.form-aniadir label {
+  flex: 0 0 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-aniadir input[type="text"],
+.form-aniadir input[type="url"],
+.form-aniadir textarea,
+.form-aniadir select {
+    flex: 1 0 5%; /* Ajusta el tamaño de los campos */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Estilos para el botón */
+.form-aniadir button {
+  padding: 8px 16px;
+  width: 35%;
+  max-width: 100px;
+  background-color: #caa869;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: auto;
+}
+
+.form-aniadir button:hover {
+  background-color: #685128;
+}
+
+/* ----------------------Estilos para la sección de administración de obras */
+/* Estilos para la tabla y sus celdas */
+.coleccion-admin{
+  padding: 2%;
+  max-width: 100%;
+
+}
+.obra_admin {
+  max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.obra_admin th,
+.obra_admin td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.obra_admin img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Estilos para los botones */
+.obra_admin button {
+  padding: 6px 12px;
+  background-color: #caa869;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.obra_admin button:hover {
+  background-color: #685128;
+}
+
+/* Estilo para las filas impares */
+.obra_admin tbody tr:nth-child(odd) {
+  background-color: #e2e2e2; /* Color gris claro */
+}
+
+.exitoMsg{
+  color: green;
+  font-size: large;
+  text-align: center;
+  font-size: bold;
+}
+
+/* Estilos para la ventana emegente de confirmacion */
+/* Estilos para la ventana emergente (modal) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-align: center;
+  border-radius: 10px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.confirmar, .cancelar {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.confirmar {
+  background-color: #caa869;
+  color: white;
+}
+
+.confirmar:hover {
+  background-color: #685128;
+}
+
+.cancelar {
+  background-color: #d9534f;
+  width: 90%;
+  color: white;
+}
+
+.cancelar:hover {
+  background-color: #e08380;
+}
+
+
+/* Funcionalidad con más informacion al hacer over */
+.tooltip {
+  text-decoration: none;
+  position: relative;
+}
+
+.tooltip span {
+  display: none;
+  z-index: 9;
+
+}
+
+.tooltip:hover span {
+  display: block;
+  position: fixed;
+  overflow: hidden;
+}
+
+.infobox {
+  background: rgba(0, 0, 0, 0.65); /* Un poco más oscuro para mayor contraste */
+  padding: 2%;
+  width: fit-content;
+  max-width: 350px;
+  height: fit-content;
+  display: block;
+  font-weight:500 ;
+}
+
+.infobox .click {
+  color: #ffcb86;
+  font-size: large;
+}
+.infobox p {
+  margin-top: 5px;
+  color: #dedede;
+}
+
+.click-title{
+  color: #ffcb86;
+}

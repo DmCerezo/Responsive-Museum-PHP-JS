@@ -1,0 +1,224 @@
+/* Estilos generales */
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+:root{
+    --logo-color: #e7d6ad;
+}
+*{
+    font-family:Montserrat;
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    margin: 5%;
+}
+
+/* ticket  */
+.ticket{
+    grid-column-start: 1;
+    grid-column-end: -1;
+    width: 100%;
+    min-width: 10vh;
+    height: 100%;
+    min-height: fit-content;
+    background-color: #f1e2bd;
+    background-image: url(../img/patron-museo.png);
+    background-size: 190px 180px;
+    border-radius: 1.5vw;
+    position: relative;
+    padding: 4%;
+    box-shadow: 0.5vw 0.7vw 0px 0.2vw rgba(61, 40, 0, 0.658);
+    align-content: center;
+    transition: transform 0.3s ease; /* Agrega una transición suave */
+}
+.ticket:hover{
+    transform: scale(1.03); /* Aumenta el tamaño en un 5% */
+    cursor: pointer;
+}
+
+.ticket_content{
+    display: flex;
+    flex-direction: row;
+}
+.ticket_content_top{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    border-style:  none dashed none  none ; /* Solo el borde derecho */
+    border-width: 0.7vw; /* Ajusta el ancho del borde según lo necesites */
+    border-color:  #ffffff; /* Color del borde */
+}
+.ticket_content_top img{
+    width: 14vw;
+    filter: grayscale(90%);
+}
+.ticket_content_top p{
+    text-align: start;
+    margin-left: 0.1vw;
+    font-size: 2.5vw;
+    width: 30px;
+    font-weight: 600;
+    color:#ffffff;
+}
+.ticket_content_top h2{
+    font-size: 3.4vw;
+    margin-left: 15vw;
+    margin-right: 1.2vw;
+    color:#ffffff;
+
+}
+.ticket_content_bottom{
+   align-content: center;
+   margin-left: 3%;
+}
+.ticket_content_bottom img{
+    width: 11vw;
+}
+
+
+/* Estilos de las secciones */
+.f-parent{
+    margin-top: 1%;
+    height: auto;
+    gap: 1%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 3fr)); 
+    padding: 2%;
+    background-color: #ebebebb0;
+}
+.parent {
+
+    margin-top: 1%;
+    height: auto;
+    gap: 1%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 3fr)); 
+    padding: 2%;
+    background-color: #ebebebb0;
+}
+@media all and (max-width:740px) {
+    .parent{
+        gap:4%;
+        padding-bottom: 20%;
+    }
+    section .dias li {
+        font-size: 10px;
+        line-height: 0.2;
+      }
+    .mes{
+        margin-top: 2px;
+    }
+}
+
+.parent section{
+    h1{
+        font-size: xx-large;
+        margin: 1% 0 5% 0;
+
+    }
+}
+.horario{
+    p{
+        color:#555555;
+        margin-bottom: 3%;
+    }
+    a{
+        text-decoration: underline;
+        color: black;
+    }
+    .gratis{
+        margin-top: 3%;
+        font-style: italic;
+    }
+}
+.Calendario{
+    margin-top: 5%;
+}
+
+.mes {
+    margin-top: 3%;
+    background-color: #f1e2bd00;
+    background-image: url(../img/patron-museo.png);
+    width: 100%;
+    text-align: center;
+    font-weight: 900;
+}
+
+.mes table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.mes caption {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.mes th, .mes td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 12px;
+}
+
+.mes .semana th {
+    background-color: #ddd;
+    color: #666;
+}
+
+.mes .dias td {
+    background-color: #eee;
+    color: #777;
+}
+
+.mes .dias td .gratis {
+    background: #c4b09b;
+    color: white;
+    border-radius: 100px;
+}
+
+.mes .dias td .cerrado {
+    background: #bc2d1a;
+    color: white;
+    border-radius: 100px;
+}
+
+
+/* Responsive */
+@media screen and (max-width: 720px) {
+    .mes th, .mes td {
+        font-size: 10px;
+    }
+    .mes{
+        width: 85vw;
+    }
+    .ticket{
+        width: 85vw;
+    }    
+    .horario section{
+        width: 85vw;
+    }
+    .hora-coleccion{
+        width: fit-content;
+    }
+    .hora-exposicion{
+        width: fit-content;
+    }
+    .precios{
+        width: fit-content;
+    }
+    .horario section h1{
+        font-size: 7vw;
+    }
+    .Calendario h1{
+        font-size: 4vw;
+        margin-top: 15%;
+    }
+
+}
+

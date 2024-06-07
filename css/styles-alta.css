@@ -1,0 +1,133 @@
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css);
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+:root{
+  --logo-color:#e7d6ad;
+  --area-color:#222;
+  --form-color:#333;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@media all and (max-width: 450px) {
+*{
+  font-size: small;
+}
+  h1{
+    font-size: xx-large;
+  }
+
+}
+
+body {
+  background: radial-gradient(circle, rgba(87,53,0,1) 0%, rgba(56,28,0,1) 44%, rgba(10,6,0,1) 100%);
+  font-family:Montserrat;
+}
+
+.perfil{
+  display: flex;
+  justify-content: left;
+  margin-bottom: 5%;
+  align-items: center;
+  img{
+    width: 30%;
+  }
+  article{
+    margin-left: 5%;
+    p{
+      font-size: 0.7rem;
+    }
+  }
+}
+
+h1{
+  margin-bottom: 5%;
+}
+
+.form-register {
+  width: 27rem;
+  max-width: 95%;
+  background: var(--form-color);
+  padding: 1.875rem;
+  margin: auto;
+  margin-top: 6.25rem;
+  border-radius: 0.625rem;
+  color: white;
+  box-shadow: 0.4375rem 0.8125rem 2.3125rem #000;
+}
+
+.form-register h4 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.controls {
+  width: 100%;
+  background: var(--area-color);;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  border: 0px solid var(--logo-color);
+  font-size: 18px;
+  color: white;
+}
+
+.form-register p {
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.form-register a {
+  color: white;
+  text-decoration: none;
+}
+
+.form-register a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.form-register .botons {
+  width: 100%;
+  background: #857349;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.form-register .botons:hover {
+  background: #a3853e;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+.form-register:focus{
+	border: .1em solid #0198E1;
+}
+.form-register .form-options {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#comment{
+	height: 5em;
+  color: white;
+	max-width: 100%;
+  background-color: var(--area-color);
+	width: 100%;
+	padding: .8em;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  border: 1px solid var(--logo-color);
+	border: .1em solid rgb(0,0,0);
+}
+
+textarea{
+  field-sizing: content;
+}

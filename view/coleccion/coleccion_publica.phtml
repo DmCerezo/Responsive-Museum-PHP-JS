@@ -1,0 +1,163 @@
+<?php
+/*******************************************
+ *
+ * Ingeniería Informática - PW - David Martín Cerezo - 2024
+ *
+ *******************************************
+ *
+ *  Coleccion dinamica que se mostrará a todos los usarios
+ *
+ ******************************************************************************/
+
+// Función para obtener valores únicos de una columna en la base de datos
+function obtenerValoresUnicos($conexion, $columna) {
+    $query = $conexion->prepare("SELECT DISTINCT $columna FROM coleccion ORDER BY $columna ASC");
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_COLUMN);
+}
+
+// Función para obtener obras filtradas
+function obtenerObras($conexion, $filtro = '', $valor = '') {
+    if ($filtro && $valor) {
+        $query = $conexion->prepare("SELECT * FROM coleccion WHERE $filtro = :valor");
+        $query->bindParam(':valor', $valor);
+    } else {
+        $query = $conexion->prepare("SELECT * FROM coleccion");
+    }
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Conectar a la base de datos
+$dsn = "mysql:host=localhost;dbname=dbdavidmcerezo_pw2324;charset=utf8";
+$usuario_db = "pwdavidmcerezo";
+$password_db = "23davidmcerezo24";
+
+try {
+    $conexion = new PDO($dsn, $usuario_db, $password_db);
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Obtener valores únicos
+    $siglos = obtenerValoresUnicos($conexion, 'fecha');
+    $autores = obtenerValoresUnicos($conexion, 'autor');
+    $temas = obtenerValoresUnicos($conexion, 'tipo');
+
+    // Obtener obras filtradas
+    $obras = [];
+    if (isset($_GET['tipo'])) {
+        $obras = obtenerObras($conexion, 'tipo', $_GET['tipo']);
+    } elseif (isset($_GET['autor'])) {
+        $obras = obtenerObras($conexion, 'autor', $_GET['autor']);
+    } elseif (isset($_GET['tema'])) {
+        $obras = obtenerObras($conexion, 'tipo', $_GET['tema']);
+    } elseif (isset($_GET['fecha'])) {
+        $obras = obtenerObras($conexion, 'fecha', $_GET['fecha']);
+    } else {
+        $obras = obtenerObras($conexion);
+    }
+
+    // Paginación
+    $obrasPorPagina = 9; // Cambiado a 9
+    $totalObras = count($obras);
+    $totalPaginas = ceil($totalObras / $obrasPorPagina);
+    $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $inicio = ($paginaActual - 1) * $obrasPorPagina;
+    $obrasPagina = array_slice($obras, $inicio, $obrasPorPagina);
+} catch (PDOException $e) {
+    echo "Error de base de datos: " . $e->getMessage();
+    die();
+}
+?>
+<main>
+    <section class="presentacion">
+        <div class="it-txt">
+            <h1>Colección Permanente</h1>
+        </div>
+        <div class="it2-img">
+            <img src="https://i.pngimg.me/thumb/f/720/comdlpng6937990.jpg" alt="mona lisa">
+        </div>
+        <div class="banner"></div>
+    </section>
+
+    <section class="parent">
+        <!-- Sidebar -->
+        <input type="checkbox" id="desplegable" class="toggle-checkbox">
+        <label for="desplegable" class="collapsible">Filtrar Colecciones</label>
+        <aside class="sidebar">
+            <p>TIPO</p>
+            <article class="menu-item">
+                <a href="?" class="menu-link">Ver todas</a>
+                <?php foreach ($temas as $tema): ?>
+                    <a href="?tipo=<?php echo urlencode($tema); ?>" class="menu-link"><?php echo htmlspecialchars($tema); ?></a>
+                <?php endforeach; ?>
+            </article>
+            <p>AUTORES</p>
+            <article class="menu-item">
+                <?php foreach ($autores as $autor): ?>
+                    <a href="?autor=<?php echo urlencode($autor); ?>" class="menu-link"><?php echo htmlspecialchars($autor); ?></a>
+                <?php endforeach; ?>
+            </article>
+            <p>TEMA</p>
+            <article class="menu-item">
+                <?php foreach ($temas as $tema): ?>
+                    <a href="?tema=<?php echo urlencode($tema); ?>" class="menu-link"><?php echo htmlspecialchars($tema); ?></a>
+                <?php endforeach; ?>
+            </article>
+            <p>EPOCA</p>
+            <article class="menu-item">
+                <?php foreach ($siglos as $siglo): ?>
+                    <a href="?fecha=<?php echo urlencode($siglo); ?>" class="menu-link"><?php echo htmlspecialchars($siglo); ?></a>
+                <?php endforeach; ?>
+            </article>
+        </aside>
+
+        <!-- Body con obras -->
+        <section class="body-coleccion">
+            <?php foreach ($obrasPagina as $index => $obra): ?>
+                    <section class="section<?php echo $index; ?>">
+                    <a class="tooltip" href="subsecciones/obra_detalle.php?id=<?php echo urlencode($obra['id']); ?>">
+                        <img src="<?php echo htmlspecialchars($obra['enlace_imagen']); ?>" alt="<?php echo htmlspecialchars($obra['nombre']); ?>">
+                        <!-- Pop up con info -->
+                        <span>
+                            <div class="infobox">
+                                <b  class="click">¡Click para ver en detalle!</b>
+                                <p><b class="click">Titulo: </b><?php echo htmlspecialchars($obra['nombre']); ?><p>
+                                <p><b class="click">Categoria: </b><?php echo htmlspecialchars($obra['tipo']); ?><p>
+                                <?php echo nl2br(htmlspecialchars($obra['descripcion'])); ?>
+                            </div>
+                        </span>
+                    </a>
+                        <article>
+                            <h2 class="title"><?php echo htmlspecialchars($obra['nombre']); ?></h2><br>
+                            <p class="description"><?php echo htmlspecialchars($obra['autor']); ?></p>
+                            <p class="description"><?php echo htmlspecialchars($obra['fecha']); ?></p>
+                        </article>
+                    </section>
+
+            <?php endforeach; ?>
+        </section>
+
+
+        <!-- Paginación -->
+        <div class="paginacion">
+            <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                <a class="menu-link"href="?<?php echo http_build_query(array_merge($_GET, ['pagina' => $i])); ?>" class="pagina-link"><?php echo $i; ?></a>
+            <?php endfor; ?>
+        </div>
+    </section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tooltips = document.querySelectorAll('.tooltip span');
+
+    window.onmousemove = function (e) {
+        const x = (e.clientX + 20) + 'px',
+              y = (e.clientY + 20) + 'px';
+        tooltips.forEach(tooltip => {
+            tooltip.style.top = y;
+            tooltip.style.left = x;
+        });
+    };
+});
+</script>

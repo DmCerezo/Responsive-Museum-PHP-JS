@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro</title>
+<link rel="stylesheet" href="../css/styles-alta.css">
+<link rel="icon" type="image/x-icon" href="../img/favicon.png">
+<script>
+function validarFormulario() {
+    var errores = [];
+
+    var nombre = document.getElementById("nombre").value;
+    var apellidos = document.getElementById("apellidos").value;
+    var usuario = document.getElementById("usuario").value;
+    var correo = document.getElementById("correo").value;
+    var contrasena = document.getElementById("pwd").value;
+    var contrasena_confirm = document.getElementById("pwd2").value;
+    var aceptarTerminos = document.getElementById("aceptar-terminos").checked;
+
+    // Validar formato de correo
+    var correoValido = /^\S+@\S+\.\S+$/.test(correo);
+    if (!correoValido) {
+        errores.push("Por favor, ingrese un correo electrónico válido.");
+    }
+
+    // Validar longitud de usuario
+    if (usuario.length > 10) {
+        errores.push("El nombre de usuario no debe tener más de 10 caracteres.");
+    }
+
+    // Validar longitud y complejidad de contraseña
+    if (contrasena.length < 5 || !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(contrasena)) {
+        errores.push("La contraseña debe tener al menos 5 caracteres y contener al menos un caracter especial.");
+    }
+
+    // Confirmar que las contraseñas coinciden
+    if (contrasena !== contrasena_confirm) {
+        errores.push("Las contraseñas no coinciden.");
+    }
+
+    // Validar aceptación de términos y condiciones
+    if (!aceptarTerminos) {
+        errores.push("Debe aceptar los términos y condiciones para continuar.");
+    }
+
+    // Mostrar alertas de errores
+    if (errores.length > 0) {
+        for (var i = 0; i < errores.length; i++) {
+            alert(errores[i]);
+        }
+        return false;
+    }
+
+    return true;
+}
+</script>
+</head>
+<body>
+  <section class="form-register">
+    <h4>Formulario Registro</h4>
+     <!-- Implementar etiqueta form para siguiente práctica -->
+     <form action="altausuarios.php" method="POST" onsubmit="return validarFormulario()">
+      <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese su Nombre" required>
+      <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido" required>
+      <input class="controls" type="text" name="usuario" id="usuario" placeholder="Nombre Usuario Publico" required>
+      <input class="controls" type="text" name="correo" id="correo" placeholder="Ingrese su Correo" required>
+      <input class="controls" type="password" name="contrasena" id="pwd" placeholder="Ingrese su Contraseña" required>
+      <input class="controls" type="password" name="contrasena_confirm" id="pwd2" placeholder="Confirme su Contraseña" required>
+      <label class="container">
+        <input type="checkbox" id="aceptar-terminos">
+        <span class="checkmark">Estoy de acuerdo con los <a> Términos y Condiciones</a></span>
+      </label>
+      <input class="botons" type="submit" value="Registrar">
+    </form>
+    <p><a href="#">¿Ya tengo Cuenta?</a></p>
+  </section>
+</body>
+</html>

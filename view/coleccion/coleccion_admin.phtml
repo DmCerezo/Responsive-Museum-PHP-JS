@@ -1,0 +1,229 @@
+<?php
+/*******************************************
+ *
+ * Ingeniería Informática - PW - David Martín Cerezo - 2024
+ *
+ *******************************************
+ *
+ *  Pagina que se mostrará a los administradores del museo
+ *
+ ******************************************************************************/
+?>
+<meta charset="UTF-8">
+<html lang="es">
+<?php
+// Conectar a la base de datos
+$dsn = "mysql:host=localhost;dbname=dbdavidmcerezo_pw2324;charset=utf8";
+$usuario_db = "pwdavidmcerezo";
+$password_db = "23davidmcerezo24";
+
+try {
+    // Crear una nueva instancia de PDO
+    $conexion = new PDO($dsn, $usuario_db, $password_db);
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Preparar la consulta SQL para obtener las obras de la colección
+    $query = $conexion->query('SELECT * FROM coleccion');
+    $obras = $query->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+    die();
+}
+?>
+
+<main>
+    <section class="presentacion">
+        <div class="it-txt">
+            <h1>Administrar Colección</h1>
+        </div>
+        <div class="it2-img">
+            <img src="https://cdn-icons-png.freepik.com/512/269/269074.png" alt="editar">
+        </div>
+        <div class="banner"></div>
+    </section>
+
+    <?php if (isset($_GET['info']) && $_GET['info'] == 2): ?>
+    <p class="exitoMsg">La obra ha sido eliminada exitosamente.</p>
+    <?php endif; ?>
+    <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+        <p class="errorMsg">Error: ID de la obra no proporcionado.</p>
+    <?php endif; ?>
+    <?php if (isset($_GET['info']) && $_GET['info'] == 4): ?>
+    <p class="exitoMsg">La obra se actualizo exitosamente.</p>
+    <?php endif; ?>
+    <?php if (isset($_GET['error']) && $_GET['error'] == 2): ?>
+        <p class="errorMsg">Error: la obra no se pudo actualizar.</p>
+    <?php endif; ?>
+    <?php if (isset($_GET['error']) && $_GET['error'] == 4): ?>
+        <p class="errorMsg">NO POST.</p>
+    <?php endif; ?>
+    <?php if (isset($_GET['info']) && $_GET['info'] == 3): ?>
+        <p class="exitoMsg">La ha obra ha sido registrada exitosamente.</p>
+    <?php endif; ?>
+
+    <p class="title">Añadir una nueva obra</p>
+    <section class="form-aniadir">
+        <!-- Formulario para añadir una nueva obra a la colección -->
+
+        <form action="<?= BASE_URL ?>php/procesar_obra.php" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <br>
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo" required>
+                <option value="Pintura">Pintura</option>
+                <option value="Escultura">Escultura</option>
+                <option value="Paleontología">Paleontología</option>
+                <option value="Acuario">Acuario</option>
+                <option value="Bicho">Bicho</option>
+            </select>
+            <br>
+            <label for="autor">Autor:</label>
+            <input type="text" id="autor" name="autor" required>
+            <br>
+            <label for="fecha">Fecha:</label>
+            <input type="text" id="fecha" name="fecha" required>
+            <br>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+            <br>
+            <div class="full-width">
+                <label for="enlace_imagen">Enlace imagen:</label>
+                <input type="url" id="enlace_imagen" name="enlace_imagen" required>
+            </div>
+            <br>
+            <button type="submit">Añadir Obra</button>
+        </form>
+    </section>
+
+    <!-- Coleccion visible -->
+    <section class="coleccion-admin">
+        <b>Obras en la colección</b>
+        <!-- Tabla para mostrar las obras -->
+        <table class="obra_admin">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Autor</th>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Mostrar las obras de la colección -->
+                <?php foreach ($obras as $obra): ?>
+                    <tr>
+                        <td><?= $obra['nombre'] ?></td>
+                        <td><?= $obra['tipo'] ?></td>
+                        <td><?= $obra['autor'] ?></td>
+                        <td><?= $obra['fecha'] ?></td>
+                        <td><?= $obra['descripcion'] ?></td>
+                        <td><?php echo isset($obra['enlace_imagen']) ? '<img src="' . $obra['enlace_imagen'] . '" alt="' . $obra['nombre'] . '">' : 'Sin imagen'; ?></td>
+                        <td>
+                            <button onclick="editarObra(<?= htmlspecialchars(json_encode($obra)) ?>)">Editar</button>
+                            <button onclick="confirmarEliminacion(<?= $obra['id'] ?>)">Eliminar</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Ventana emergente de confirmacion -->
+    <div id="modalEliminar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <p>¿Estás seguro de que deseas eliminar esta obra?</p>
+            <form id="formEliminar" action="<?= BASE_URL ?>php/eliminar_obra.php" method="post">
+                <input type="hidden" name="id" id="obraId">
+                <button type="submit" class="confirmar">Confirmar</button>
+                <button type="button" class="cancelar" onclick="cerrarModal()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Ventana emergente de edición -->
+    <div id="modalEditar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModalEditar()">&times;</span>
+            <h2>Editar Obra</h2>
+            <form action="<?= BASE_URL ?>php/procesar_edicion_obra.php" method="post">
+                <input type="hidden" id="obraIdEditar" name="id">
+                <label for="nombreEditar">Nombre:</label>
+                <input type="text" id="nombreEditar" name="nombre" required>
+                <br>
+                <label for="tipoEditar">Tipo:</label>
+                <select id="tipoEditar" name="tipo" required>
+                    <option value="Pintura">Pintura</option>
+                    <option value="Escultura">Escultura</option>
+                    <option value="Paleontología">Paleontología</option>
+                    <option value="Acuario">Acuario</option>
+                    <option value="Bicho">Bicho</option>
+                </select>
+                <br>
+                <label for="autorEditar">Autor:</label>
+                <input type="text" id="autorEditar" name="autor" required>
+                <br>
+                <label for="fechaEditar">Fecha:</label>
+                <input type="text" id="fechaEditar" name="fecha" required>
+                <br>
+                <label for="descripcionEditar">Descripción:</label><br>
+                <textarea id="descripcionEditar" name="descripcion" required></textarea>
+                <br>
+                <div class="full-width">
+                    <label for="enlace_imagenEditar">Enlace imagen:</label><br>
+                    <input type="url" id="enlace_imagenEditar" name="enlace_imagen" required>
+                </div>
+                <br>
+                <button type="submit" class="confirmar">Guardar Cambios</button>
+                <button type="button" class="cancelar" onclick="cerrarModalEditar()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function editarObra(obra) {
+            document.getElementById('obraIdEditar').value = obra.id;
+            document.getElementById('nombreEditar').value = obra.nombre;
+            document.getElementById('tipoEditar').value = obra.tipo;
+            document.getElementById('autorEditar').value = obra.autor;
+            document.getElementById('fechaEditar').value = obra.fecha;
+            document.getElementById('descripcionEditar').value = obra.descripcion;
+            document.getElementById('enlace_imagenEditar').value = obra.enlace_imagen;
+
+            document.getElementById('modalEditar').style.display = 'block';
+        }
+
+        function cerrarModalEditar() {
+            document.getElementById('modalEditar').style.display = 'none';
+        }
+
+        // Cerrar el ventana emergente al hacer clic fuera de él
+        window.onclick = function(event) {
+            var modalEditar = document.getElementById('modalEditar');
+            if (event.target == modalEditar) {
+                modalEditar.style.display = 'none';
+            }
+        }
+
+        function confirmarEliminacion(id) {
+            document.getElementById('obraId').value = id;
+            document.getElementById('modalEliminar').style.display = 'block';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalEliminar').style.display = 'none';
+        }
+
+        // Cerrar el ventana emergente al hacer clic fuera de él
+        window.onclick = function(event) {
+            var modalEliminar = document.getElementById('modalEliminar');
+            if (event.target == modalEliminar) {
+                modalEliminar.style.display = 'none';
+            }
+        }
+    </script>
+</main>

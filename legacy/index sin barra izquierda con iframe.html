@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1 Museo</title>
+    <link rel="stylesheet" href="css/comun/styles-cabecera-footer.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+</head>
+<body>
+
+<section class="container">
+    <header>
+        <ul class="head-top">
+            <!-- Logo -->
+            <li>
+                <a href="html/inicio.html" target="main_iframe" ><img class="logo" src="img/M3.png" alt="Logo museo"></a>
+            </li>
+            <!-- Nombre museo -->
+            <li class="nombre-museo">
+                <h1>Museo Socrates</h1>
+            </li>
+            <!-- Login -->
+            <li class="form-head-top">
+                <form id="loginform" action="html/altausuarios.html">
+                    <input type="text" name="usuario" placeholder="Usuario" required>
+                    <input type="password" placeholder="Contraseña" name="password" required>
+                    <button type="submit" title="Alta" name="Alta">Alta</button>
+                </form>
+            </li>
+        </ul>
+        <!-- Barra de navegación -->
+        <nav class="main-nav">
+            <ul class ="nav-list">
+                <li class="ini"><a href="html/inicio.html" target="main_iframe">Inicio</a></li>
+                <li class="des"><a href="html/coleccion.html" target="main_iframe">Colección</a></li>
+                <li class="des"><a href="html/visita.html" target="main_iframe">Visita</a></li>
+                <li class="des"><a href="html/seccion-exposiciones.html" target="main_iframe">Exposiciones</a></li>
+                <li class="des"><a href="html/informacion.html" target="main_iframe">Información</a></li>
+                <li class="des"><a href="html/experiencias.html"  target="main_iframe">Experiencias</a></li>
+    
+            </ul>
+            <!-- Boton de naveacion responsive -->
+            <section class="desplegable">
+                <button class="btn"><i class="fa-solid fa-bars"></i></button>
+                <section class="desplegable-content">
+                    <a href="html/inicio.html" target="main_iframe">Inicio</a>
+                    <a href="html/coleccion.html" target="main_iframe">Colección</a>
+                    <a href="html/visita.html" target="main_iframe">Visita</a>
+                    <a href="html/seccion-exposiciones.html" target="main_iframe">Exposiciones</a>
+                    <a href="html/informacion.html"  target="main_iframe">Información</a>
+                    <a href="html/experiencias.html"  target="main_iframe">Experiencias</a>
+                </section>
+            </section>
+        </nav>
+
+    </header>
+        <!-- Barra lateral de navegacion -->
+        <aside></aside>
+    <!-- Parte principal de la pagina que va cambiando -->
+    <main>
+        <iframe name="main_iframe"src="html/inicio.html" title="Iframe principal navegacion">
+        </iframe>
+    </main>
+
+    <!-- footer Parte final -->
+    <footer>
+        <p>Realizado por <span><a href="html/contacto.html">D. Martín Cerezo </a></span>©.</p>
+        <span><a href="como_se_hizo.pdf">¿Como se hizo?</a></span>
+    </footer>
+</section>
+
+</body>
+</html>
