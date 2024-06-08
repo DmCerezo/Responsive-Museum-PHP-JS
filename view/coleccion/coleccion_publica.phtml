@@ -84,7 +84,7 @@ try {
         <input type="checkbox" id="desplegable" class="toggle-checkbox">
         <label for="desplegable" class="collapsible">Filtrar Colecciones</label>
         <aside class="sidebar">
-            <p>TIPO</p>
+            <p>TEMA</p>
             <article class="menu-item">
                 <a href="?" class="menu-link">Ver todas</a>
                 <?php foreach ($temas as $tema): ?>
@@ -95,12 +95,6 @@ try {
             <article class="menu-item">
                 <?php foreach ($autores as $autor): ?>
                     <a href="?autor=<?php echo urlencode($autor); ?>" class="menu-link"><?php echo htmlspecialchars($autor); ?></a>
-                <?php endforeach; ?>
-            </article>
-            <p>TEMA</p>
-            <article class="menu-item">
-                <?php foreach ($temas as $tema): ?>
-                    <a href="?tema=<?php echo urlencode($tema); ?>" class="menu-link"><?php echo htmlspecialchars($tema); ?></a>
                 <?php endforeach; ?>
             </article>
             <p>EPOCA</p>
