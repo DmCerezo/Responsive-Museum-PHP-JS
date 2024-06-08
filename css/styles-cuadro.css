@@ -111,11 +111,17 @@ body {
         color:rgb(173, 69, 0);
     }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
     .bottom{
         flex-direction: column;
         align-items: center;
     }
+
+    .body-coleccion {
+        gap: 2%;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); 
+
+      }
 
 }
