@@ -8,10 +8,7 @@
  *  Pagina que se mostrará a los administradores del museo
  *
  ******************************************************************************/
-?>
-<meta charset="UTF-8">
-<html lang="es">
-<?php
+
 // Conectar a la base de datos
 $dsn = "mysql:host=localhost;dbname=dbdavidmcerezo_pw2324;charset=utf8";
 $usuario_db = "pwdavidmcerezo";
@@ -25,10 +22,36 @@ try {
     // Preparar la consulta SQL para obtener las obras de la colección
     $query = $conexion->query('SELECT * FROM coleccion');
     $obras = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    // Obtener temas, autores y fechas únicos
+    $temas = $conexion->query('SELECT DISTINCT tipo AS tema FROM coleccion')->fetchAll(PDO::FETCH_ASSOC);
+    $autores = $conexion->query('SELECT DISTINCT autor FROM coleccion')->fetchAll(PDO::FETCH_ASSOC);
+    $fechas = $conexion->query('SELECT DISTINCT fecha FROM coleccion')->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
     die();
 }
+
+// Filtrar obras si se han enviado parámetros
+$filtrarSql = 'SELECT * FROM coleccion WHERE 1=1';
+$params = [];
+
+if (isset($_GET['tema']) && $_GET['tema'] != '') {
+    $filtrarSql .= ' AND tipo = :tema';
+    $params[':tema'] = $_GET['tema'];
+}
+if (isset($_GET['autor']) && $_GET['autor'] != '') {
+    $filtrarSql .= ' AND autor = :autor';
+    $params[':autor'] = $_GET['autor'];
+}
+if (isset($_GET['fecha']) && $_GET['fecha'] != '') {
+    $filtrarSql .= ' AND fecha = :fecha';
+    $params[':fecha'] = $_GET['fecha'];
+}
+
+$stmt = $conexion->prepare($filtrarSql);
+$stmt->execute($params);
+$obrasFiltradas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <main>
@@ -43,13 +66,13 @@ try {
     </section>
 
     <?php if (isset($_GET['info']) && $_GET['info'] == 2): ?>
-    <p class="exitoMsg">La obra ha sido eliminada exitosamente.</p>
+        <p class="exitoMsg">La obra ha sido eliminada exitosamente.</p>
     <?php endif; ?>
     <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
         <p class="errorMsg">Error: ID de la obra no proporcionado.</p>
     <?php endif; ?>
     <?php if (isset($_GET['info']) && $_GET['info'] == 4): ?>
-    <p class="exitoMsg">La obra se actualizo exitosamente.</p>
+        <p class="exitoMsg">La obra se actualizo exitosamente.</p>
     <?php endif; ?>
     <?php if (isset($_GET['error']) && $_GET['error'] == 2): ?>
         <p class="errorMsg">Error: la obra no se pudo actualizar.</p>
@@ -60,12 +83,13 @@ try {
     <?php if (isset($_GET['info']) && $_GET['info'] == 3): ?>
         <p class="exitoMsg">La ha obra ha sido registrada exitosamente.</p>
     <?php endif; ?>
+    <?php if (isset($_GET['info']) && $_GET['info'] == 5): ?>
+        <p class="exitoMsg">Base de datos guardada exitosamente.</p>
+    <?php endif; ?>
 
     <p class="title">Añadir una nueva obra</p>
     <section class="form-aniadir">
-        <!-- Formulario para añadir una nueva obra a la colección -->
-
-        <form action="<?= BASE_URL ?>php/procesar_obra.php" method="post">
+        <form action="procesar_obra.php" method="post">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
             <br>
@@ -96,10 +120,10 @@ try {
         </form>
     </section>
 
-    <!-- Coleccion visible -->
+
     <section class="coleccion-admin">
         <b>Obras en la colección</b>
-        <!-- Tabla para mostrar las obras -->
+        <div class="filtros"><button onclick="abrirModalFiltrar()">Filtrar Obras</button></div>
         <table class="obra_admin">
             <thead>
                 <tr>
@@ -113,8 +137,7 @@ try {
                 </tr>
             </thead>
             <tbody>
-                <!-- Mostrar las obras de la colección -->
-                <?php foreach ($obras as $obra): ?>
+                <?php foreach ($obrasFiltradas as $obra): ?>
                     <tr>
                         <td><?= $obra['nombre'] ?></td>
                         <td><?= $obra['tipo'] ?></td>
@@ -132,12 +155,11 @@ try {
         </table>
     </section>
 
-    <!-- Ventana emergente de confirmacion -->
     <div id="modalEliminar" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModal()">&times;</span>
             <p>¿Estás seguro de que deseas eliminar esta obra?</p>
-            <form id="formEliminar" action="<?= BASE_URL ?>php/eliminar_obra.php" method="post">
+            <form id="formEliminar" action="eliminar_obra.php" method="post">
                 <input type="hidden" name="id" id="obraId">
                 <button type="submit" class="confirmar">Confirmar</button>
                 <button type="button" class="cancelar" onclick="cerrarModal()">Cancelar</button>
@@ -145,24 +167,17 @@ try {
         </div>
     </div>
 
-    <!-- Ventana emergente de edición -->
     <div id="modalEditar" class="modal">
         <div class="modal-content">
             <span class="close" onclick="cerrarModalEditar()">&times;</span>
             <h2>Editar Obra</h2>
-            <form action="<?= BASE_URL ?>php/procesar_edicion_obra.php" method="post">
-                <input type="hidden" id="obraIdEditar" name="id">
+            <form action="procesar_edicion_obra.php" method="post">
+                <input type="hidden" name="id" id="obraIdEditar">
                 <label for="nombreEditar">Nombre:</label>
                 <input type="text" id="nombreEditar" name="nombre" required>
                 <br>
                 <label for="tipoEditar">Tipo:</label>
-                <select id="tipoEditar" name="tipo" required>
-                    <option value="Pintura">Pintura</option>
-                    <option value="Escultura">Escultura</option>
-                    <option value="Paleontología">Paleontología</option>
-                    <option value="Acuario">Acuario</option>
-                    <option value="Bicho">Bicho</option>
-                </select>
+                <input type="text" id="tipoEditar" name="tipo" required>
                 <br>
                 <label for="autorEditar">Autor:</label>
                 <input type="text" id="autorEditar" name="autor" required>
@@ -170,11 +185,11 @@ try {
                 <label for="fechaEditar">Fecha:</label>
                 <input type="text" id="fechaEditar" name="fecha" required>
                 <br>
-                <label for="descripcionEditar">Descripción:</label><br>
+                <label for="descripcionEditar">Descripción:</label>
                 <textarea id="descripcionEditar" name="descripcion" required></textarea>
                 <br>
                 <div class="full-width">
-                    <label for="enlace_imagenEditar">Enlace imagen:</label><br>
+                    <label for="enlace_imagenEditar">Enlace imagen:</label>
                     <input type="url" id="enlace_imagenEditar" name="enlace_imagen" required>
                 </div>
                 <br>
@@ -184,7 +199,50 @@ try {
         </div>
     </div>
 
+    <div id="modalFiltrar" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModalFiltrar()">&times;</span>
+            <h2>Filtrar Obras</h2>
+            <form action="" method="get">
+                <label for="temaFiltrar">Tema:</label>
+                <select id="temaFiltrar" name="tema">
+                    <option value="">Todos</option>
+                    <?php foreach ($temas as $tema): ?>
+                        <option value="<?= $tema['tema'] ?>"><?= $tema['tema'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <br>
+                <label for="autorFiltrar">Autor:</label>
+                <select id="autorFiltrar" name="autor">
+                    <option value="">Todos</option>
+                    <?php foreach ($autores as $autor): ?>
+                        <option value="<?= $autor['autor'] ?>"><?= $autor['autor'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <br>
+                <label for="fechaFiltrar">Fecha:</label>
+                <select id="fechaFiltrar" name="fecha">
+                    <option value="">Todas</option>
+                    <?php foreach ($fechas as $fecha): ?>
+                        <option value="<?= $fecha['fecha'] ?>"><?= $fecha['fecha'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <br>
+                <button type="submit" class="confirmar">Filtrar</button>
+                <button type="button" class="cancelar" onclick="cerrarModalFiltrar()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
     <script>
+        function abrirModalFiltrar() {
+            document.getElementById('modalFiltrar').style.display = 'block';
+        }
+
+        function cerrarModalFiltrar() {
+            document.getElementById('modalFiltrar').style.display = 'none';
+        }
+
         function editarObra(obra) {
             document.getElementById('obraIdEditar').value = obra.id;
             document.getElementById('nombreEditar').value = obra.nombre;
@@ -193,7 +251,6 @@ try {
             document.getElementById('fechaEditar').value = obra.fecha;
             document.getElementById('descripcionEditar').value = obra.descripcion;
             document.getElementById('enlace_imagenEditar').value = obra.enlace_imagen;
-
             document.getElementById('modalEditar').style.display = 'block';
         }
 
@@ -201,11 +258,18 @@ try {
             document.getElementById('modalEditar').style.display = 'none';
         }
 
-        // Cerrar el ventana emergente al hacer clic fuera de él
         window.onclick = function(event) {
             var modalEditar = document.getElementById('modalEditar');
+            var modalEliminar = document.getElementById('modalEliminar');
+            var modalFiltrar = document.getElementById('modalFiltrar');
             if (event.target == modalEditar) {
                 modalEditar.style.display = 'none';
+            }
+            if (event.target == modalEliminar) {
+                modalEliminar.style.display = 'none';
+            }
+            if (event.target == modalFiltrar) {
+                modalFiltrar.style.display = 'none';
             }
         }
 
@@ -216,14 +280,6 @@ try {
 
         function cerrarModal() {
             document.getElementById('modalEliminar').style.display = 'none';
-        }
-
-        // Cerrar el ventana emergente al hacer clic fuera de él
-        window.onclick = function(event) {
-            var modalEliminar = document.getElementById('modalEliminar');
-            if (event.target == modalEliminar) {
-                modalEliminar.style.display = 'none';
-            }
         }
     </script>
 </main>
