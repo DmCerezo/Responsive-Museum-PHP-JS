@@ -313,6 +313,19 @@ a:active{
   width: 100%;
 }
 
+/* Estilos para el boton eliminar */
+.obra_admin button:last-child {
+  background-color: #ca8d69;
+}
+.obra_admin button:last-child:hover {
+  background-color: #683728;
+}
+
+.obra_admin button:last-child {
+  background-color: #ca8d69;
+}
+
+
 .obra_admin button:hover {
   background-color: #685128;
 }
