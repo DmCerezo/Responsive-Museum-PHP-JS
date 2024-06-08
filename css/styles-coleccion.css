@@ -312,19 +312,31 @@ a:active{
   margin-bottom: 5px;
   width: 100%;
 }
+.filtros button {
+  background-color: #ebebeb;
+  border:#caa869 1px solid;
+  padding: 6px 12px;
+  color: #caa869;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+.filtros button:hover {
+  background-color: #caa869;
+  color: #ebebeb;
+  border:#ebebeb 1px solid;
+}
 
-/* Estilos para el boton eliminar */
+
+
 .obra_admin button:last-child {
   background-color: #ca8d69;
 }
 .obra_admin button:last-child:hover {
   background-color: #683728;
 }
-
-.obra_admin button:last-child {
-  background-color: #ca8d69;
-}
-
 
 .obra_admin button:hover {
   background-color: #685128;
