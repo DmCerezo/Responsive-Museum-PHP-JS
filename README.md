@@ -3,7 +3,9 @@
 ## Vista Coleccion Dinamica
 ![image](https://github.com/DmCerezo/Responsive-Museum-PHP-JS/assets/127233730/d5d39946-5fd4-4d40-92f9-1a3238287a16)
 ## Vista Coleccion Administrador
-![image](https://github.com/DmCerezo/Responsive-Museum-PHP-JS/assets/127233730/1d640238-26ca-4a0c-bd29-cfefa04ccdae)
+![image](https://github.com/DmCerezo/Responsive-Museum-PHP-JS/assets/127233730/b33ffc71-8843-4146-8cdf-ae9738f3938d)
+### Modal para filtrar
+![image](https://github.com/DmCerezo/Responsive-Museum-PHP-JS/assets/127233730/30a2910e-ff0e-4c82-9f89-cbdfb1e464e8)
 ### Modal de confirmación al elimnar obra
 ![image](https://github.com/DmCerezo/Responsive-Museum-PHP-JS/assets/127233730/55ecdb7b-a2b7-4ec5-98ef-2471dbd0fed7)
 ### Modal de edición de obra
