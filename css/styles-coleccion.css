@@ -86,7 +86,7 @@ iframe{
           .body-coleccion {
               display: flex;
               flex-direction: column;
-              padding-bottom: 700px;
+              padding-bottom: 90px;
           }
           .body-coleccion  section{
             margin-bottom: 5%;
