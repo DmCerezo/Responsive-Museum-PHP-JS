@@ -124,10 +124,10 @@ header img {
   max-width: 15vw;
 }
 
-.errorMsg{
-  color:red; 
-  font-size:small;
+.exitoMsg{
+  color: red;
   max-width: 90%;
+  font-size: small;
 }
 
 /* No iniciado  */
