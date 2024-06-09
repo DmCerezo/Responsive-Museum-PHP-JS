@@ -89,7 +89,7 @@ $obrasFiltradas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <p class="title">Añadir una nueva obra</p>
     <section class="form-aniadir">
-        <form action="procesar_obra.php" method="post">
+        <form action="<?= BASE_URL ?>php/procesar_obra.php" method="post">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
             <br>
@@ -159,7 +159,7 @@ $obrasFiltradas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-content">
             <span class="close" onclick="cerrarModal()">&times;</span>
             <p>¿Estás seguro de que deseas eliminar esta obra?</p>
-            <form id="formEliminar" action="eliminar_obra.php" method="post">
+            <form id="formEliminar" action="<?= BASE_URL ?>php/eliminar_obra.php" method="post">
                 <input type="hidden" name="id" id="obraId">
                 <button type="submit" class="confirmar">Confirmar</button>
                 <button type="button" class="cancelar" onclick="cerrarModal()">Cancelar</button>
@@ -171,7 +171,7 @@ $obrasFiltradas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="modal-content">
             <span class="close" onclick="cerrarModalEditar()">&times;</span>
             <h2>Editar Obra</h2>
-            <form action="procesar_edicion_obra.php" method="post">
+            <form action="<?= BASE_URL ?>php/procesar_edicion_obra.php" method="post">
                 <input type="hidden" name="id" id="obraIdEditar">
                 <label for="nombreEditar">Nombre:</label>
                 <input type="text" id="nombreEditar" name="nombre" required>
