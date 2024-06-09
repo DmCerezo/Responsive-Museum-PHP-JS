@@ -13,10 +13,8 @@
     <h4>Te invitamos a seguir descubriendo y aprendiendo sobre historia:</h4>
     <p><a href="https://bahia.ugr.es/~davidmcerezo/pe2/">Seguir explorando el Museo</a></p>
     <br>
-    <h4>También explorar la colección de forma dinamica date_date_set
-      
-    :</h4>
-    <p><a href="https://bahia.ugr.es/~davidmcerezo/pe2/html/coleccion.php">Inciar sesión y publicar obras de arte</a></p>
+    <h4>También puedes dejar comentarios inciando sesión:</h4>
+    <p><a href="https://bahia.ugr.es/~davidmcerezo/pe2/html/experiencias.php">Experiencias de visitantes</a></p>
     
     <?php
     function obtenerNombreUsuarioMasReciente() {
