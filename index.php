@@ -132,7 +132,7 @@
         <!-- Css grid -->
         <section class="parent">
             <section class="section1">
-                <a href="html/coleccion.html" target="main_iframe"><img src="img/pintura-conde-de-orgaz.jpg" alt="Pintura conde de orgaz" width="100" height="50"></a>
+                <a href="html/coleccion.php?tipo=Pintura#A" target="main_iframe"><img src="img/pintura-conde-de-orgaz.jpg" alt="Pintura conde de orgaz" width="100" height="50"></a>
                 <article>
                   <h2 class="title">Pintura historica</h2>
                   <p class="description">Explora nuestra colección de pinturas clásicas y sumérgete en la historia con esta icónica obra maestra que retrata el legendario entierro del Conde de Orgaz, una joya del arte renacentista.</p>
@@ -140,7 +140,7 @@
               </section>
 
             <section class="section2">
-              <a href="html/coleccion.html" target="main_iframe"><img src="img/img-pez-jurel.jpg" alt="imagen jurel" width="300" height="200"></a>
+              <a href="html/coleccion.php?tipo=Acuario#A" target="main_iframe"><img src="img/img-pez-jurel.jpg" alt="imagen jurel" width="300" height="200"></a>
               <article>  
                 <h2 class="title">La diversidad del mar</h2>
                 <p class="description">Descubre la fascinante vida marina a través de nuestra sección dedicada al océano, donde podrás explorar la biodiversidad submarina y conocer más sobre la extraordinaria especie del pez Jurel.</p>
@@ -148,7 +148,7 @@
             </section>
 
             <section class="section3"> 
-              <a href="html/coleccion.html" target="main_iframe"><img src="img/img-bicho-libelula.jpg" alt="imagen libelula" width="300" height="200"></a>
+              <a href="coleccion.php?tipo=Bicho#A" target="main_iframe"><img src="img/img-bicho-libelula.jpg" alt="imagen libelula" width="300" height="200"></a>
               <article>  
                 <h2 class="title">La belleza de la naturaleza</h2>
                 <p class="description">Sumérgete en el mundo natural y contempla la gracia y elegancia de los insectos en nuestra colección de arte inspirada en la naturaleza, donde cada detalle te transportará a la majestuosidad del reino animal.</p>
@@ -156,7 +156,7 @@
             </section>
 
             <section class="section4">
-              <a href="html/subsecciones/fosiles.html" target="main_iframe"><img src="https://fciencias.ugr.es/images/stories/imagenes/nocheInvestigadores/rodeadosFosiles.jpg" alt="imagen fosil" width="300" height="200"></a>
+              <a href="htmlcoleccion.php?tipo=Paleontología#A" target="main_iframe"><img src="https://fciencias.ugr.es/images/stories/imagenes/nocheInvestigadores/rodeadosFosiles.jpg" alt="imagen fosil" width="300" height="200"></a>
               <article>   
                 <h2 class="title">El legado del pasado</h2>
                 <p class="description">Explora el fascinante mundo de la paleontología y sumérgete en un viaje a través del tiempo para descubrir los misteriosos secretos que los fósiles guardan sobre la evolución y la historia de nuestro planeta.</p>
@@ -164,7 +164,7 @@
             </section>
 
             <section class="section5">
-              <a href="html/coleccion.html" ><img src="img/img-escultura-efeso.jpg" alt="imagen fosil" width="300" height="200"></a>
+              <a href="html/coleccion.php" ><img src="img/img-escultura-efeso.jpg" alt="imagen fosil" width="300" height="200"></a>
               <article>               
                   <h2 class="title">Escultura clásica </h2>
                   <p class="description">Admira la obra maestra del Renacimiento italiano, el icónico David de Miguel Ángel, y sumérgete en el mundo de la escultura clásica en nuestra destacada sección dedicada a las esculturas que han marcado la historia del arte.</p>
@@ -172,7 +172,7 @@
             </section>
 
             <section class="section6">
-              <a href="html/coleccion.html" ><img src="img/img-arquitectura-efeso.jpg" alt="imagen fosil" width="300" height="200"></a>
+              <a href="html/coleccion.php" ><img src="img/img-arquitectura-efeso.jpg" alt="imagen fosil" width="300" height="200"></a>
               <article>    
                 <h2 class="title">Arquitectura histórica</h2>
                 <p class="description">Explora la grandeza de la arquitectura antigua con nuestra selección de monumentos emblemáticos, como el majestuoso Partenón, que te transportará a épocas pasadas y te maravillará con su belleza y esplendor.</p>
@@ -180,7 +180,7 @@
             </section>
 
             <section class="section7">
-              <a href="html/informacion.html"><img src="img/mapa.png" alt="imagen mapa" width="300" height="200"></a>
+              <a href="html/informacion.php"><img src="img/mapa.png" alt="imagen mapa" width="300" height="200"></a>
               <article>     
                 <h2 class="title">Calendario e Información</h2>
                 <p class="description">Una sección que explora el área donde se encuentra el museo, destacando eventos significativos, figuras importantes y la evolución del lugar a lo largo del tiempo.</p>
@@ -188,7 +188,7 @@
             </section>
 
             <section class="section8">
-              <a href="html/experiencias.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Granada-Palacio_Carlos_V-P1050006.jpg/800px-Granada-Palacio_Carlos_V-P1050006.jpg" alt="imagen fosil" width="300" height="200"></a>
+              <a href="html/experiencias.php"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Granada-Palacio_Carlos_V-P1050006.jpg/800px-Granada-Palacio_Carlos_V-P1050006.jpg" alt="imagen fosil" width="300" height="200"></a>
               <article>    
                 <h2 class="title">Experiencias de visita</h2>
                 <p class="description">Esta sección podría proporcionar información sobre eventos culturales, festivales, ferias y actividades recreativas que tienen lugar en el área cercana al museo.</p>

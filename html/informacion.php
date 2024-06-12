@@ -189,7 +189,7 @@
                         Lunes: 12:00 - 16:00<br>
                         De martes a domingo: 10:00 - 19:00<br>
                     </p>
-                    <a href="coleccion.html">Ver colección permanente</a><br>
+                    <a href="coleccion.php">Ver colección permanente</a><br>
                     <p class="gratis">*Acceso gratuito gracias al patrocinio de UGR</p>
                 </section>
             </section>
@@ -202,7 +202,7 @@
                         De martes a viernes y domingo: 10:00 - 19:00<br>
                         Sábados: 10:00 - 23:00* <br>
                     </p>
-                    <a href="exposiciones.html#Exposiciones-temporales">Ver exposición temporal</a><br>
+                    <a href="exposiciones.php#Exposiciones-temporales">Ver exposición temporal</a><br>
                     <p class="gratis">*Acceso gratuito de 21:00 a 23:00 gracias a la colaboración de "bahia.ugr.es".</p>
                 </section>
             </section>
@@ -215,7 +215,7 @@
                     Entrada + audioguía: Tarifa + 5€<br>
                     Estudiante de PW: Gratis <br>
                 </p>
-                <a href="../index.html">Compara entradas</a><br>
+                <a href="../index.php">Compara entradas</a><br>
                 <p class="gratis">*Acceso gratuito atraves de "nombre"@bahia.ugr.es a la colaboración de "bahia.ugr.es".</p>
             </section>
         </section>

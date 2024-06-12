@@ -18,7 +18,7 @@ try {
 
     // Validar entradas
     if (empty($nombre) || empty($apellidos) || empty($usuario) || empty($correo) || empty($contrasena)) {
-        header('Location: index.php?error=1'); // Redirigir con un mensaje de error
+        header('Location: index.php?error=1'); 
         exit;
     }
 

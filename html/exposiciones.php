@@ -31,7 +31,7 @@
     <main>
         <section class="parent">
                 <!-- Sección 0: Pintura mundialmente famosa -->
-                <a href="coleccion.html" id="VerMás0">
+                <a href="coleccion.php" id="VerMás0">
                     <section class="section0">
                         <img src="../img/pintura-conde-de-orgaz.jpg" alt="Pintura mundialmente famosa">
                         <article>
@@ -43,7 +43,7 @@
                     </section>
                 </a>
                 <!-- Sección 1: Especies marinas -->
-                <a href="coleccion.html" id="VerMás1">
+                <a href="coleccion.php" id="VerMás1">
                     <section class="section1">
                         <img src="../img/img-pez-jurel.jpg" alt="Especies marinas">
                         <article>
@@ -55,7 +55,7 @@
                     </section>
                 </a>
                 <!-- Sección 2: Bichos exóticos -->
-                <a href="coleccion.html" id="VerMás2">
+                <a href="coleccion.php" id="VerMás2">
                     <section class="section2">
                         <img src="../img/img-bicho-libelula.jpg" alt="Bichos exóticos">
                         <article>
@@ -68,7 +68,7 @@
                     </section>
                 </a>
                 <!-- Sección 3: Fósiles del Cretácico -->
-                <a href="coleccion.html" id="VerMás3">
+                <a href="coleccion.php" id="VerMás3">
                     <section class="section3">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Ammonite_fossil_%288606998286%29.jpg" alt="Fósiles del Cretácico">
                             <article>
@@ -81,7 +81,7 @@
                     </section>
                 </a>
                 <!-- Sección 3: Fósiles del Cretácico -->
-                <a href="coleccion.html" id="VerMás4">
+                <a href="coleccion.php" id="VerMás4">
                     <section class="section3">
                         <img src="../img/img-arquitectura-efeso.jpg" alt="Arquitectura">
                         <article>

@@ -49,6 +49,11 @@ footer {
     }
 
 }
+.exitoMsg{
+  color: red;
+  max-width: 90%;
+  font-size: small;
+}
 
 @media all and (max-width: 600px) {
   footer{
@@ -124,10 +129,10 @@ header img {
   max-width: 15vw;
 }
 
-.exitoMsg{
-  color: red;
+.errorMsg{
+  color:red; 
+  font-size:small;
   max-width: 90%;
-  font-size: small;
 }
 
 /* No iniciado  */

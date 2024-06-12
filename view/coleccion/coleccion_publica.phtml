@@ -57,7 +57,7 @@ try {
     }
 
     // Paginación
-    $obrasPorPagina = 9; // Cambiado a 9
+    $obrasPorPagina = 9; // Paginas pedidas en el guión 9
     $totalObras = count($obras);
     $totalPaginas = ceil($totalObras / $obrasPorPagina);
     $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
@@ -79,28 +79,28 @@ try {
         <div class="banner"></div>
     </section>
 
-    <section class="parent">
+    <section class="parent" id="A">
         <!-- Sidebar -->
         <input type="checkbox" id="desplegable" class="toggle-checkbox">
         <label for="desplegable" class="collapsible">Filtrar Colecciones</label>
         <aside class="sidebar">
             <p>TEMA</p>
             <article class="menu-item">
-                <a href="?" class="menu-link">Ver todas</a>
+                <a href="?#A" class="menu-link">Ver todas</a>
                 <?php foreach ($temas as $tema): ?>
-                    <a href="?tipo=<?php echo urlencode($tema); ?>" class="menu-link"><?php echo htmlspecialchars($tema); ?></a>
+                    <a href="?tipo=<?php echo urlencode($tema); ?>#A" class="menu-link"><?php echo htmlspecialchars($tema); ?></a>
                 <?php endforeach; ?>
             </article>
             <p>AUTORES</p>
             <article class="menu-item">
                 <?php foreach ($autores as $autor): ?>
-                    <a href="?autor=<?php echo urlencode($autor); ?>" class="menu-link"><?php echo htmlspecialchars($autor); ?></a>
+                    <a href="?autor=<?php echo urlencode($autor); ?>#A" class="menu-link"><?php echo htmlspecialchars($autor); ?></a>
                 <?php endforeach; ?>
             </article>
             <p>EPOCA</p>
             <article class="menu-item">
                 <?php foreach ($siglos as $siglo): ?>
-                    <a href="?fecha=<?php echo urlencode($siglo); ?>" class="menu-link"><?php echo htmlspecialchars($siglo); ?></a>
+                    <a href="?fecha=<?php echo urlencode($siglo); ?>#A" class="menu-link"><?php echo htmlspecialchars($siglo); ?></a>
                 <?php endforeach; ?>
             </article>
         </aside>

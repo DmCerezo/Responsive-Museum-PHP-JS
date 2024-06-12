@@ -8,13 +8,6 @@
 body{
   background-color: #ebebeb;
 }
-iframe{
-  height: 100%;
-  width: 100%;
-  border: none;
-}
-
-
 /* Grid con cajas de informacion---------------------- */
 .parent {
     margin: 5% 0% 5% 5%;
@@ -32,13 +25,12 @@ iframe{
 
     }
 
-  
   .sidebar { 
         grid-area: sidebar; 
         width: 15vw;
         padding: 5%;
     }
-
+    
   /* caja con info */
   .body-coleccion {
 
@@ -47,7 +39,7 @@ iframe{
       display: grid;
       gap: 3%;
       grid-template-columns: repeat(auto-fill, minmax(17rem, 2fr)); 
-      padding: 2% 2% 10% 2%;
+      padding: 2% 2% 2% 2%;
       overflow: scroll;
       scrollbar-width: none;
     }

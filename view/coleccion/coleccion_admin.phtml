@@ -65,6 +65,7 @@ $obrasFiltradas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="banner"></div>
     </section>
 
+    <!-- Gestion de erroes y mensajes de confirmación -->
     <?php if (isset($_GET['info']) && $_GET['info'] == 2): ?>
         <p class="exitoMsg">La obra ha sido eliminada exitosamente.</p>
     <?php endif; ?>
@@ -87,6 +88,7 @@ $obrasFiltradas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p class="exitoMsg">Base de datos guardada exitosamente.</p>
     <?php endif; ?>
 
+    
     <p class="title">Añadir una nueva obra</p>
     <section class="form-aniadir">
         <form action="<?= BASE_URL ?>php/procesar_obra.php" method="post">
@@ -186,11 +188,15 @@ $obrasFiltradas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <input type="text" id="fechaEditar" name="fecha" required>
                 <br>
                 <label for="descripcionEditar">Descripción:</label>
-                <textarea id="descripcionEditar" name="descripcion" required></textarea>
+                <textarea id="descripcionEditar" name="descripcion"  style="
+                    height: 75px;
+                    width: 325px;"required>
+                    </textarea>
                 <br>
                 <div class="full-width">
                     <label for="enlace_imagenEditar">Enlace imagen:</label>
-                    <input type="url" id="enlace_imagenEditar" name="enlace_imagen" required>
+                    <input type="url" id="enlace_imagenEditar" name="enlace_imagen" style="
+                    width: 325px;" required>
                 </div>
                 <br>
                 <button type="submit" class="confirmar">Guardar Cambios</button>
